@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="17">
+      <module name="Simple_Banking_System.Simple_Banking_System-task-build-classes-java.main" target="11" />
+      <module name="Simple_Banking_System.Simple_Banking_System-task-build-generated-sources-annotationProcessor-java.main" target="11" />
+      <module name="Simple_Banking_System.Simple_Banking_System-task-build-generated-sources-headers-java.main" target="11" />
+      <module name="Simple_Banking_System.Simple_Banking_System-task-build-reports-tests.main" target="11" />
+      <module name="Simple_Banking_System.Simple_Banking_System-task-build-test-results.main" target="11" />
+      <module name="Simple_Banking_System.Simple_Banking_System-task-build-tmp.main" target="11" />
+      <module name="Simple_Banking_System.Simple_Banking_System-task.main" target="11" />
+      <module name="Simple_Banking_System.util.main" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
