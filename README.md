@@ -1,4 +1,4 @@
-# Simple_Banking_System
+# <img height="32" width="32" src="https://unpkg.com/simple-icons@v6/icons/sqlite.svg" /> Simple_Banking_System
 ### The objectives of this project:
 1. Connect to the database (the database name is passed as an argument).
 2. Create table "card" if it doesn't exist.
