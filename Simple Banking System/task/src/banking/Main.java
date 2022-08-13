@@ -1,7 +1,10 @@
 package banking;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Random;
+import java.util.Scanner;
 
 enum BankingSystemStatus {
     MENU, CREATE, LOG, SECRETMENU, ACCOUNTS, LOGMENU, BALANCE, INCOME, TRANSFER, CLOSE, EXIT
@@ -77,20 +80,23 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
         if (args.length != 2 || !args[0].equals("-fileName")) {
-            System.err.println("Wrong arguments!");
-            return;
-        }
-        app = new InsertApp(connect(args[1]));
-        app.createTable();
-        do {
-            BankingSystem.bankingSystem();
-            System.out.print("\n");
-        } while (state != BankingSystemStatus.EXIT);
-        scanner.close();
+            System.err.println("Usage: -fileName <file_name>");
+        } else {
+            try (Connection connection = connect(args[1])) {
+                app = new InsertApp(connection);
+                app.createTable();
+                do {
+                    BankingSystem.bankingSystem();
+                    System.out.print("\n");
+                } while (state != BankingSystemStatus.EXIT);
+                scanner.close();
 
-        System.out.println("Bye!");
+                System.out.println("Bye!");
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     static void mainMenu() {

@@ -14,12 +14,9 @@ public class InsertApp {
     }
 
     public void createTable() {
-        try {
-
-            // Statement предназначен для выполнения простых SQL-запросов без параметров
-            // Больше подходит использование Statement для запросов DDL (CREATE TABLE, DROP TABLE)
-            Statement stmt = conn.createStatement();
-
+        // Statement предназначен для выполнения простых SQL-запросов без параметров
+        // Больше подходит использование Statement для запросов DDL (CREATE TABLE, DROP TABLE)
+        try (Statement stmt = conn.createStatement()) {
             String sql = "CREATE TABLE IF NOT EXISTS card " +
                     "(id INTEGER PRIMARY KEY, " +
                     " number TEXT, " +
