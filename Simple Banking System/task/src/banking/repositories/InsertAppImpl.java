@@ -1,4 +1,4 @@
-package banking;
+package banking.repositories;
 
 import java.sql.*;
 
@@ -6,13 +6,14 @@ import java.sql.*;
  *
  * @author sqlitetutorial.net
  */
-public class InsertApp {
+public class InsertAppImpl implements InsertApp {
     private final Connection conn;
 
-    public InsertApp(Connection conn) {
+    public InsertAppImpl(Connection conn) {
         this.conn = conn;
     }
 
+    @Override
     public void createTable() {
         // Statement предназначен для выполнения простых SQL-запросов без параметров
         // Больше подходит использование Statement для запросов DDL (CREATE TABLE, DROP TABLE)
@@ -39,6 +40,7 @@ public class InsertApp {
      * @param number
      * @param pin
      */
+    @Override
     public void insertAccount(String number, String pin) {
         String sql = "INSERT INTO card(number,pin) VALUES(?,?)";
 
@@ -53,6 +55,7 @@ public class InsertApp {
         }
     }
 
+    @Override
     public boolean isExistingNumber(String number) {
         String sql = "SELECT * from card WHERE number LIKE ?; ";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -69,6 +72,7 @@ public class InsertApp {
         return false;
     }
 
+    @Override
     public int isExistingAccount(String number, String pin) {
         String sql = "SELECT * from card WHERE number LIKE ? AND pin LIKE ?; ";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -86,6 +90,7 @@ public class InsertApp {
         return -1;
     }
 
+    @Override
     public void selectAccounts() {
         String sql = "SELECT * from card; ";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -103,6 +108,7 @@ public class InsertApp {
         }
     }
 
+    @Override
     public int getBalance(int id) {
         String sql = "SELECT * from card WHERE id=?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -118,6 +124,7 @@ public class InsertApp {
         return 0;
     }
 
+    @Override
     public void addIncome(int id, int income) {
         String sql = "UPDATE card SET balance = balance + ? WHERE id=?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -131,6 +138,7 @@ public class InsertApp {
         }
     }
 
+    @Override
     public void doTransfer(String numberSender, int income, String numberReceiver) {
         String insertSenderSQL = "UPDATE card " +
                 "SET balance = balance - ? WHERE number = ?";
@@ -165,6 +173,7 @@ public class InsertApp {
         }
     }
 
+    @Override
     public void closeAccount(int id) {
         String sql = "DELETE FROM card WHERE id=?;";
 

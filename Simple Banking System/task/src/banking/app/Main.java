@@ -1,4 +1,6 @@
-package banking;
+package banking.app;
+
+import banking.repositories.InsertAppImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -51,7 +53,7 @@ class BankingSystem {
 public class Main {
     static BankingSystemStatus state = BankingSystemStatus.MENU;
     final static Scanner scanner = new Scanner(System.in);
-    static InsertApp app;
+    static InsertAppImpl app;
     static String number;
     static int id;
 
@@ -84,7 +86,7 @@ public class Main {
             System.err.println("Usage: -fileName <file_name>");
         } else {
             try (Connection connection = connect(args[1])) {
-                app = new InsertApp(connection);
+                app = new InsertAppImpl(connection);
                 app.createTable();
                 do {
                     BankingSystem.bankingSystem();
