@@ -1,5 +1,5 @@
 # <img height="32" width="32" src="https://unpkg.com/simple-icons@v6/icons/sqlite.svg" /> Simple_Banking_System
-### The objectives of this project:
+The objectives of this project:
 1. Connect to the database (the database name is passed as an argument).
 2. Create table "card" if it doesn't exist.
 3. Generate a bank card number using the Luhn algorithm (the bank card number must start with 4000 00).
@@ -14,7 +14,7 @@
 - Bank card number that does not correspond to the Luhn algorithm;
 - A bank card number that does not exist;
 - The transfer amount is greater than the user's current balance.
-### Examples:
+## Example 1
 ```
 1. Create account
 2. Log into account
@@ -223,6 +223,7 @@ You have exited the secret menu!
 
 Bye!
 ```
+## Example 2
 ```
 1. Create account
 2. Log into account
